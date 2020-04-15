@@ -85,9 +85,16 @@ class _HomePageTodoState extends State<HomePageTodo> {
       },
     );
 
+    //todos.add(new Todo(title: "itemT, body: "itemB", completed: 0));
+log("message1");
     if (todo != null) {
       setState(() {
+<<<<<<< HEAD
         todos.add(todo);
+=======
+        log("message2");
+        this.todos.add(todo);
+>>>>>>> bc06423c3d1133a53fda45c665322eb00f990381
       });
     }
   }
