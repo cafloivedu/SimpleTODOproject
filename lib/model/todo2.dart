@@ -26,14 +26,14 @@ class NewTodoDialogState extends State<NewTodoDialog> {
               decoration: InputDecoration(
                 labelText: 'Title',
               ),
-              //controller: controllerTitle,
+              controller: controllerTitle,
               autofocus: true,
             ),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Body',
               ),
-              //controller: controllerTitle,
+              controller: controllerBody,
               autofocus: true,
             ),
             /* Expanded(
@@ -59,7 +59,7 @@ class NewTodoDialogState extends State<NewTodoDialog> {
             controllerTitle.clear();
             controllerBody.clear();
 
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(todo);
           },
         ),
       ],
