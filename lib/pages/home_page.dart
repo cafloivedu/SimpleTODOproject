@@ -67,7 +67,7 @@ class _HomePageTodoState extends State<HomePageTodo> {
                   ? Colors.green[200]
                   : Colors.yellow[200],
               child: ListTile(
-                leading: _getResource(element.type),
+                leading: element.completed == 0 ? _getResource(element.type) : Icon(Icons.assignment_turned_in, size: 55.0),
                 title: Text(element.title),
                 subtitle: Text(element.body),
               ),
@@ -89,7 +89,7 @@ class _HomePageTodoState extends State<HomePageTodo> {
       case 'HomeWork':
         return Icon(Icons.work, size: 55.0);
       default:
-        return Icon(Icons.watch_later, size: 55.0);
+        return Icon(Icons.assignment, size: 55.0);
     }
   }
 
