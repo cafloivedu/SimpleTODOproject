@@ -1,3 +1,4 @@
+import 'package:f_202010_todo_class/model/todo.dart';
 import 'package:flutter/material.dart';
 
 class NewTodoDialog extends StatefulWidget {
@@ -51,6 +52,13 @@ class NewTodoDialogState extends State<NewTodoDialog> {
         FlatButton(
           child: Text('Submit'),
           onPressed: () {
+            final todo = new Todo(
+                title: controllerTitle.value.text,
+                body: controllerBody.value.text,
+                completed: 0,);
+            controllerTitle.clear();
+            controllerBody.clear();
+
             Navigator.of(context).pop();
           },
         ),

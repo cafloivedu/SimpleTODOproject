@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:f_202010_todo_class/model/todo.dart';
 import 'package:f_202010_todo_class/model/todo2.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +20,7 @@ class _HomePageTodoState extends State<HomePageTodo> {
       ),
       body: _list(),
       floatingActionButton: new FloatingActionButton(
-          onPressed: _popUp, tooltip: 'Add task', child: new Icon(Icons.add)),
+          onPressed: _addTodo, tooltip: 'Add task', child: new Icon(Icons.add)),
     );
   }
 
@@ -74,13 +76,23 @@ class _HomePageTodoState extends State<HomePageTodo> {
     return Text('$posicion');
   }
 
-  void _addTodo() {
-    setState(() {
-      todos.add(new Todo(title: "itemT", body: "itemB", completed: 0));
-    });
+  void _addTodo() async {
+    final todo = await showDialog<Todo>(
+      context: context,
+      builder: (BuildContext context) {
+        return NewTodoDialog();
+      },
+    );
+
+    if (todo != null) {
+      setState(() {
+        this.widget.todos.add(todo);
+      });
+    }
   }
 
-  void _popUp() {
+
+  /*void _popUp() {
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -132,7 +144,7 @@ class _HomePageTodoState extends State<HomePageTodo> {
             ],
           );
         });
-  }
+  }*/
 
   // void _onTap(BuildContext context, Todo location, int posicion) {
   //   setState(() {
