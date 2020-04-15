@@ -53,7 +53,7 @@ class NewTodoDialogState extends State<NewTodoDialog> {
           child: Text('Submit'),
           onPressed: () {
             final todo = new Todo(
-                title: "item 1"/*controllerTitle.value.text*/,
+                title: controllerTitle.value.text,
                 body: controllerBody.value.text,
                 completed: 0,);
             controllerTitle.clear();

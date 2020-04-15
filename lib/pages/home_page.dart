@@ -33,7 +33,7 @@ class _HomePageTodoState extends State<HomePageTodo> {
         return Dismissible(
           key: UniqueKey(),
           onDismissed: (direction) {
-            //_item.removeAt(index);
+            todos.removeAt(posicion);
             Scaffold.of(context).showSnackBar(SnackBar(
               content: Text("Item dismissed"),
             ));
@@ -64,8 +64,8 @@ class _HomePageTodoState extends State<HomePageTodo> {
             color:
                 element.completed == 1 ? Colors.blue[200] : Colors.yellow[200],
             child: ListTile(
-              title: _item(element, posicion),
-              subtitle: Text(""),
+              title: Text(element.title),
+              subtitle: Text(element.body),
             ),
           ),
         );
@@ -89,12 +89,8 @@ class _HomePageTodoState extends State<HomePageTodo> {
 log("message1");
     if (todo != null) {
       setState(() {
-<<<<<<< HEAD
-        todos.add(todo);
-=======
         log("message2");
         this.todos.add(todo);
->>>>>>> bc06423c3d1133a53fda45c665322eb00f990381
       });
     }
   }
