@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:f_202010_todo_class/model/todo.dart';
 import 'package:f_202010_todo_class/widget/type_dropdown.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +12,8 @@ class NewTodoDialog extends StatefulWidget {
 class NewTodoDialogState extends State<NewTodoDialog> {
   final controllerTitle = new TextEditingController();
   final controllerBody = new TextEditingController();
-  // final String selected;
-  // final ValueChanged<String> onChangedValue;
-  String _dropSelected = "DEFAULT";
 
-  // NewTodoDialogState(this.selected, this.onChangedValue);
+  String _dropSelected = 'Default';
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +42,13 @@ class NewTodoDialogState extends State<NewTodoDialog> {
               controller: controllerBody,
               autofocus: true,
             ),
-            Expanded(
-               child: TodoTypeDropdown(
-                 //selected: _dropSelected,
-                //  onChangedValue: (value) => setState((){
-                //    _dropSelected = value;
-                //  })
-               )
-            )
+            Container(
+                child: TodoTypeDropdown(
+                    selected: _dropSelected,
+                    onChangedValue: (value) => setState(() {
+                      log(_dropSelected+" y "+ value);
+                          _dropSelected = value;
+                        })))
           ],
         ),
       ),
@@ -65,9 +63,11 @@ class NewTodoDialogState extends State<NewTodoDialog> {
           child: Text('Submit'),
           onPressed: () {
             final todo = new Todo(
-                title: controllerTitle.value.text,
-                body: controllerBody.value.text,
-                completed: 0,);
+              title: controllerTitle.value.text,
+              body: controllerBody.value.text,
+              completed: 0,
+              type: _dropSelected,
+            );
             controllerTitle.clear();
             controllerBody.clear();
 

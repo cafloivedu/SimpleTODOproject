@@ -10,7 +10,7 @@ class HomePageTodo extends StatefulWidget {
 }
 
 class _HomePageTodoState extends State<HomePageTodo> {
-  List<Todo> todos = new List<Todo>();  
+  List<Todo> todos = new List<Todo>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +58,19 @@ class _HomePageTodoState extends State<HomePageTodo> {
             ),
             color: Colors.redAccent,
           ),
-          child: Card(
-            color:
-                element.completed == 1 ? Colors.blue[200] : Colors.yellow[200],
-            child: ListTile(
-              leading: Icon(Icons.watch_later, size: 55.0),
-              title: Text(element.title),
-              subtitle: Text(element.body),
+          child: GestureDetector(
+            onTap: () {
+              _onTap(context, element, posicion);
+            },
+            child: Card(
+              color: element.completed == 1
+                  ? Colors.green[200]
+                  : Colors.yellow[200],
+              child: ListTile(
+                leading: _getResource(element.type),
+                title: Text(element.title),
+                subtitle: Text(element.body),
+              ),
             ),
           ),
         );
@@ -76,6 +82,17 @@ class _HomePageTodoState extends State<HomePageTodo> {
     return Text('$posicion');
   }
 
+  _getResource(String type) {
+    switch (type) {
+      case 'Call':
+        return Icon(Icons.call, size: 55.0);
+      case 'HomeWork':
+        return Icon(Icons.work, size: 55.0);
+      default:
+        return Icon(Icons.watch_later, size: 55.0);
+    }
+  }
+
   void _addTodo() async {
     final todo = await showDialog<Todo>(
       context: context,
@@ -85,20 +102,21 @@ class _HomePageTodoState extends State<HomePageTodo> {
     );
 
     //todos.add(new Todo(title: "itemT, body: "itemB", completed: 0));
-log("message1");
+
     if (todo != null) {
       setState(() {
-        log("message2");
         this.todos.add(todo);
       });
     }
   }
 
-  // void _onTap(BuildContext context, Todo location, int posicion) {
-  //   setState(() {
-  //     if (this.widget.todos[posicion].completed == 0) {
-  //       this.widget.todos[posicion].completed = 1;
-  //     }
-  //   });
-  // }
+  _onTap(BuildContext context, Todo location, int posicion) {
+    setState(() {
+      if (this.todos[posicion].completed == 0) {
+        this.todos[posicion].completed = 1;
+      } else {
+        this.todos[posicion].completed = 0;
+      }
+    });
+  }
 }
