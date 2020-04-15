@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ffi';
 
 import 'package:f_202010_todo_class/model/todo.dart';
@@ -86,7 +87,7 @@ class _HomePageTodoState extends State<HomePageTodo> {
 
     if (todo != null) {
       setState(() {
-        this.widget.todos.add(todo);
+        todos.add(todo);
       });
     }
   }

@@ -53,13 +53,13 @@ class NewTodoDialogState extends State<NewTodoDialog> {
           child: Text('Submit'),
           onPressed: () {
             final todo = new Todo(
-                title: controllerTitle.value.text,
+                title: "item 1"/*controllerTitle.value.text*/,
                 body: controllerBody.value.text,
                 completed: 0,);
             controllerTitle.clear();
             controllerBody.clear();
 
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(todo);
           },
         ),
       ],
