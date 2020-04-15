@@ -1,1 +1,1 @@
-Programarealizado por Iván Cadena y Hernán Parra
+Programa realizado por Iván Cadena y Hernán Parra
