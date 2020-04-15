@@ -23,7 +23,7 @@ class NewTodoDialogState extends State<NewTodoDialog> {
               Navigator.of(context).pop();
             },
           ),
-      ])
+      ]),
     );
   }
 }
