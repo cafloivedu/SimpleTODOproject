@@ -16,14 +16,45 @@ class NewTodoDialogState extends State<NewTodoDialog> {
         'New todo',
         style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20.0),
       ),
-      content: Column(children: <Widget>[
+      content: Form(
+        //key: _formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Title',
+              ),
+              //controller: controllerTitle,
+              autofocus: true,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Body',
+              ),
+              //controller: controllerTitle,
+              autofocus: true,
+            ),
+            /* Expanded(
+               child: TodoTypeDropdown,
+            )*/
+          ],
+        ),
+      ),
+      actions: <Widget>[
         FlatButton(
-            child: Text('Regret'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-      ]),
+          child: Text('Cancel'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        FlatButton(
+          child: Text('Submit'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
     );
   }
 }
