@@ -1,8 +1,7 @@
 import 'dart:developer';
-import 'dart:ffi';
 
 import 'package:f_202010_todo_class/model/todo.dart';
-import 'package:f_202010_todo_class/model/todo2.dart';
+import 'package:f_202010_todo_class/widget/new_todo.dart';
 import 'package:flutter/material.dart';
 
 class HomePageTodo extends StatefulWidget {
@@ -11,8 +10,7 @@ class HomePageTodo extends StatefulWidget {
 }
 
 class _HomePageTodoState extends State<HomePageTodo> {
-  List<Todo> todos = new List<Todo>();
-  final _formKey = GlobalKey<FormState>();
+  List<Todo> todos = new List<Todo>();  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +62,7 @@ class _HomePageTodoState extends State<HomePageTodo> {
             color:
                 element.completed == 1 ? Colors.blue[200] : Colors.yellow[200],
             child: ListTile(
+              leading: Icon(Icons.watch_later, size: 55.0),
               title: Text(element.title),
               subtitle: Text(element.body),
             ),
@@ -94,61 +93,6 @@ log("message1");
       });
     }
   }
-
-
-  /*void _popUp() {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: Colors.yellow[200],
-            title: Text(
-              'New todo',
-              style: TextStyle(
-                  color: Theme.of(context).primaryColor, fontSize: 20.0),
-            ),
-            content: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Title',
-                    ),
-                    //controller: controllerTitle,
-                    autofocus: true,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Body',
-                    ),
-                    //controller: controllerTitle,
-                    autofocus: true,
-                  ),
-                  // Expanded(
-                  //   child: TodoTypeDropdown,
-                  // )
-                ],
-              ),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Cancel'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              FlatButton(
-                child: Text('Submit'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        });
-  }*/
 
   // void _onTap(BuildContext context, Todo location, int posicion) {
   //   setState(() {

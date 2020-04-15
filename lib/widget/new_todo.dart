@@ -1,4 +1,5 @@
 import 'package:f_202010_todo_class/model/todo.dart';
+import 'package:f_202010_todo_class/widget/type_dropdown.dart';
 import 'package:flutter/material.dart';
 
 class NewTodoDialog extends StatefulWidget {
@@ -9,6 +10,12 @@ class NewTodoDialog extends StatefulWidget {
 class NewTodoDialogState extends State<NewTodoDialog> {
   final controllerTitle = new TextEditingController();
   final controllerBody = new TextEditingController();
+  // final String selected;
+  // final ValueChanged<String> onChangedValue;
+  String _dropSelected = "DEFAULT";
+
+  // NewTodoDialogState(this.selected, this.onChangedValue);
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -36,9 +43,14 @@ class NewTodoDialogState extends State<NewTodoDialog> {
               controller: controllerBody,
               autofocus: true,
             ),
-            /* Expanded(
-               child: TodoTypeDropdown,
-            )*/
+            Expanded(
+               child: TodoTypeDropdown(
+                 //selected: _dropSelected,
+                //  onChangedValue: (value) => setState((){
+                //    _dropSelected = value;
+                //  })
+               )
+            )
           ],
         ),
       ),
